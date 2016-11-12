@@ -133,8 +133,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def about_popup(self):
         self.about.show()
 
+
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon('../cullen3logo.png'))
     ex = Ui_MainWindow()
 
     sys.exit(app.exec_())

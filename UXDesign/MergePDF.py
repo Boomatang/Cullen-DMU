@@ -6,7 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 import sys
+
 from PyQt4 import QtCore, QtGui
+
+from pathlib import Path as p
+from Merge import merge
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,6 +31,8 @@ class Ui_MergePDF(QtGui.QWidget):
     def __init__(self):
         super(Ui_MergePDF, self).__init__()
         self.setupUi(self)
+        self.root = ''
+        self.button_actions()
 
     def setupUi(self, MergePDF):
         MergePDF.setObjectName(_fromUtf8("MergePDF"))
@@ -78,6 +84,20 @@ class Ui_MergePDF(QtGui.QWidget):
         self.mergeCancel.setText(_translate("MergePDF", "Cancel Merge", None))
         self.mergeFolder.setText(_translate("MergePDF", "Choose a Folder", None))
         self.mergeProcess.setText(_translate("MergePDF", "Possessing Files", None))
+
+
+    def button_actions(self):
+        self.mergeSelectFolder.clicked.connect(self.get_root)
+        self.mergePDF.clicked.connect(self.run_merge)
+
+    def get_root(self):
+        r = QtGui.QFileDialog.getExistingDirectory()
+        self.root = p(r)
+        if self.root.is_dir():
+            self.mergePDF.setEnabled(True)
+
+    def run_merge(self):
+        merge.run(str(self.root))
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
