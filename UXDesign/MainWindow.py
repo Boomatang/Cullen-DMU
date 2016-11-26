@@ -9,8 +9,10 @@ import sys
 
 from PyQt4 import QtCore, QtGui
 from UXDesign.MergePDF import Ui_MergePDF as MergePDF
-from UXDesign.registerCompile import Ui_RegisterCompile as RegisterCompile
+from UXDesign.MyRegisterCompile import RegisterCompileClass as RegisterCompile
 from UXDesign.About import Ui_About as About
+from UXDesign.MyMergeDXF import MergeDXFClass
+from UXDesign.MyRegisterUpdate import UpdateRegisterClass
 
 
 
@@ -37,6 +39,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.merge = MergePDF()
         self.register = RegisterCompile()
         self.about = About()
+        self.mergeDXF = MergeDXFClass()
+        self.update = UpdateRegisterClass()
         self.setupUi(self)
         self.show()
 
@@ -114,13 +118,23 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionMerge_Pdf_s.triggered.connect(self.mergerPdfs)
         self.actionRegister_Compile.triggered.connect(self.registerCompile)
         self.actionAbout.triggered.connect(self.about_popup)
+        self.actionDXF_Combine.triggered.connect(self.start_mergeDXF)
+        self.actionRegister_Update.triggered.connect(self.start_update_register)
 
+# TODO these functions need to be combined into one function
     def mergerPdfs(self):
         self.widget.hide()
         self.gridLayout.removeWidget(self.widget)
         self.gridLayout.addWidget(self.merge, 0, 0, 1, 1)
         self.merge.show()
         self.widget = self.merge
+
+    def start_mergeDXF(self):
+        self.widget.hide()
+        self.gridLayout.removeWidget(self.widget)
+        self.gridLayout.addWidget(self.mergeDXF, 0, 0, 1, 1)
+        self.mergeDXF.show()
+        self.widget = self.mergeDXF
 
     def registerCompile(self):
         self.widget.hide()
@@ -129,6 +143,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.gridLayout.addWidget(self.register, 0, 0, 1, 1)
         self.register.show()
         self.widget = self.register
+
+    def start_update_register(self):
+        self.widget.hide()
+        self.gridLayout.removeWidget(self.widget)
+        self.gridLayout.addWidget(self.update, 0, 0, 1, 1)
+        self.update.show()
+        self.widget = self.update
 
     def about_popup(self):
         self.about.show()
