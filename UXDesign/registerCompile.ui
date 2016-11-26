@@ -20,16 +20,9 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="registerCompileSelectFolder">
-       <property name="text">
-        <string>Select Project Folder</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="registerCompileDocument">
+      <widget class="QPushButton" name="register_documnet">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Select Register Document</string>
@@ -37,7 +30,30 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="registerCompileStart">
+      <widget class="QPushButton" name="project_folder">
+       <property name="text">
+        <string>Select Project Folder</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="compile_to_folder">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Compile To Folder</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="compile_package">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -46,19 +62,6 @@
        </property>
        <property name="text">
         <string>Compile Package</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="registerCompileCancel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Cancel Compile</string>
        </property>
       </widget>
      </item>
@@ -125,6 +128,16 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="help_label">
+       <property name="text">
+        <string>This is some help test for this page. As you can see it needs filling out.. :)</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
