@@ -227,22 +227,26 @@ class FinishPDF:
         self.date_folder = date_folder
         self.all_files = all_files
 
-    def run(self):
+    def run(self, finish=False):
         wbs_keys = self.all_files.keys()
 
         for key in wbs_keys:
             disp_keys = self.all_files[key].keys()
             for disp in disp_keys:
                 values = self.all_files[key].get(disp)
-                self.create_pdf(values)
+                self.create_pdf(values, finish)
 
-    def name_builder(self, wbs, disp):
+    def name_builder(self, wbs, disp, finish=False):
         today = datetime.date.fromtimestamp(time.time())
         file_name = "{} ({}-{}-{}).pdf".format(disp, today.year, today.month, today.day)
-        file_name = p(self.date_folder, wbs, file_name)
+        if finish:
+            file_name = p(self.date_folder, file_name)
+        else:
+            file_name = p(self.date_folder, wbs, file_name)
+
         return str(file_name)
 
-    def create_pdf(self, combine_files):
+    def create_pdf(self, combine_files, finish=False):
         merger = PdfFileMerger()
         wbs = None
         disp = None
@@ -252,5 +256,5 @@ class FinishPDF:
                 disp = file.discipline
             file = open(file.full_path, "rb")
             merger.append(file)
-        output = open(self.name_builder(wbs, disp), "wb")
+        output = open(self.name_builder(wbs, disp, finish=finish), "wb")
         merger.write(output)

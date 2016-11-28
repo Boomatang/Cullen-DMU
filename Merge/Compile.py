@@ -1,8 +1,11 @@
+import datetime
+import time
 import openpyxl
 import os
 from pprint import pprint
 from Merge.merge import find_file_type, newest_file
 from pathlib import Path as p
+from shutil import copyfile
 __author__ = 'Desktop'
 
 
@@ -120,6 +123,7 @@ def safe_keys(pdfs):
         output.setdefault('{}.{}'.format(temp[0], temp[1].lower()), key)
     return output
 
+
 def find_paths(files, pdfs):
     keys = safe_keys(pdfs)
     for file in files:
@@ -127,6 +131,7 @@ def find_paths(files, pdfs):
             file.path = pdfs[keys[file.name]]
         else:
             file.in_error = True
+
 
 def error_count(files):
     x = 0
@@ -136,19 +141,72 @@ def error_count(files):
     print("Number of files with errors: {}".format(x))
 
 
-def run(document, root, destination):
+def group_files(pdfs):
+    normal = []
+    tsd = []
+    progress = []
+    error = []
+    ignore = []
+
+    def check(file):
+        out = True
+        if file.in_progress:
+            out = False
+        if file.ignore:
+            out = False
+        return out
+
+    for pdf in pdfs:
+        if pdf.in_error:
+            error.append(pdf)
+
+        else:
+            if pdf.tsd and check(pdf):
+                tsd.append(pdf)
+            elif check(pdf):
+                normal.append(pdf)
+            else:
+                if pdf.ignore:
+                    ignore.append(pdf)
+
+                if pdf.in_progress:
+                    progress.append(pdf)
+
+    return {'normal': normal, 'tsd': tsd, 'progress': progress, 'error': error, 'ignore': ignore}
+
+
+def create_date_folder(root):
+    today = datetime.date.fromtimestamp(time.time())
+    folder_name = "{}-{}-{}".format(today.year, today.month, today.day)
+
+    folder = p(root, folder_name)
+
+    if not folder.is_dir():
+        folder.mkdir()
+    return folder
+
+
+def copy_files(files, root):
+
+    for file in files:
+        copyfile(file.path, os.path.join(root, file.name))
+
+
+def run(document, root):
     pdfs = working_list(root)
 
     files = get_files(document)
 
     find_paths(files, pdfs)
-
+    grouped_files = group_files(files)
     pprint(pdfs)
     files.sort()
     for file in files:
         pprint(file)
-
+    pprint(grouped_files)
     error_count(files)
+
+    return grouped_files
 
 
 

@@ -2,8 +2,9 @@ import sys
 from PyQt4 import QtGui
 from pathlib import Path as p
 import UXDesign.registerCompile as RegisterCompile
-from Merge import Compile
-
+from Merge import Compile, merge
+from other.text_report import TextReport
+from UXDesign.MyRegisterCompileUpdate import RegisterCompileUpdate
 
 class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
     def __init__(self, parent=None):
@@ -11,6 +12,7 @@ class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
         self.register = p('')
         self.project = p('')
         self.destination_Folder = p('')
+        self.update = RegisterCompileUpdate.Ui_Dialog()
         self.setupUi(self)
         self.button_actions()
 
@@ -45,7 +47,23 @@ class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
 
     def run(self):
         print('I am running')
-        Compile.run(str(self.register), str(self.project), str(self.destination_Folder))
+        files = Compile.run(str(self.register), str(self.project))
+        folder = Compile.create_date_folder(str(self.destination_Folder))
+        Compile.copy_files(files['normal'], str(folder))
+        tsd_files = []
+        for file in files['tsd']:
+            tsd_files.append(merge.PDF(p(file.path)))
+        tsd_files = merge.newest_file(tsd_files)
+        tsd_files = merge.group_files(tsd_files)
+        tsd_files = merge.sort_files(tsd_files)
+
+        tsd_finish = merge.FinishPDF(folder, tsd_files)
+        print('Merging files')
+        tsd_finish.run(finish=True)
+        print(str(folder))
+        report = TextReport(files['error'], files['progress'], files['ignore'], str(folder))
+        report.run()
+        print('Finished')
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
