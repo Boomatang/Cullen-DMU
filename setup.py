@@ -8,15 +8,22 @@ if sys.platform == 'win32':
 
 options = {
     'build_exe': {
-        'includes': 'atexit',
-        'path': sys.path + ['src']
+        'includes': ['atexit', 'os'],
+        'packages': ['openpyxl', 'os'],
+        'path': sys.path + ['src'],
+        'include_files': 'src\\cullen3logo.png'
     }
 }
 
-executables = [Executable('runner.py', base=base)]
+executables = [Executable('Cullen-DMU.py',
+                          base=base,
+                          icon="icon.ico")]
 
 setup(name='Cullen DMU',
       version='0.1',
       description="Cullen DMU",
+      url='jfitzpatrick.me',
+      author='Jim Fitzpatrick',
+      author_email='jimfity@gmail.com',
       options=options,
       executables=executables)

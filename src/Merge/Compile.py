@@ -138,7 +138,7 @@ def error_count(files):
     for file in files:
         if file.in_error:
             x += 1
-    print("Number of files with errors: {}".format(x))
+    # print("Number of files with errors: {}".format(x))
 
 
 def group_files(pdfs):
@@ -199,12 +199,12 @@ def run(document, root):
 
     find_paths(files, pdfs)
     grouped_files = group_files(files)
-    pprint(pdfs)
+    # pprint(pdfs)
     files.sort()
-    for file in files:
-        pprint(file)
-    pprint(grouped_files)
-    error_count(files)
+    # for file in files:
+    #     pprint(file)
+    # pprint(grouped_files)
+    # error_count(files)
 
     return grouped_files
 
