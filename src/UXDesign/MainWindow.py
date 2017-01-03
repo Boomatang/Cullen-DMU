@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindow.ui'
+# Form implementation generated from reading ui file 'ux/MainWindow.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
-import sys
 
 from PyQt4 import QtCore, QtGui
-from src.UXDesign.MergePDF import Ui_MergePDF as MergePDF
-from src.UXDesign.MyRegisterCompile import RegisterCompileClass as RegisterCompile
-from src.UXDesign.About import Ui_About as About
-from src.UXDesign.MyMergeDXF import MergeDXFClass
-from src.UXDesign.MyRegisterUpdate import UpdateRegisterClass
-
-
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -30,24 +22,10 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
-class Ui_MainWindow(QtGui.QMainWindow):
-
-    def __init__(self):
-        super(Ui_MainWindow, self).__init__()
-        self.widget = ""
-        self.merge = MergePDF()
-        self.register = RegisterCompile()
-        self.about = About()
-        self.mergeDXF = MergeDXFClass()
-        self.update = UpdateRegisterClass()
-        self.setupUi(self)
-        self.show()
-
-
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(400, 400)
+        MainWindow.resize(640, 530)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
@@ -55,29 +33,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.DefaultStart = QtGui.QWidget(self.centralwidget)
         self.DefaultStart.setObjectName(_fromUtf8("DefaultStart"))
         self.gridLayout.addWidget(self.DefaultStart, 0, 0, 1, 1)
-        self.widget = self.DefaultStart
-
         MainWindow.setCentralWidget(self.centralwidget)
-
-        self.create_menus(MainWindow)
-        self.button_actions()
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.menuMenu.setTitle(_translate("MainWindow", "File", None))
-        self.menuHelp.setTitle(_translate("MainWindow", "Help", None))
-        self.actionQuit.setText(_translate("MainWindow", "Quit", None))
-        self.actionHelp.setText(_translate("MainWindow", "Help", None))
-        self.actionAbout.setText(_translate("MainWindow", "About", None))
-        self.actionMerge_Pdf_s.setText(_translate("MainWindow", "Merge Pdf\'s", None))
-        self.actionDXF_Combine.setText(_translate("MainWindow", "DXF Combine", None))
-        self.actionRegister_Update.setText(_translate("MainWindow", "Register Update", None))
-        self.actionRegister_Compile.setText(_translate("MainWindow", "Register Compile", None))
-
-    def create_menus(self, MainWindow):
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 30))
         self.menubar.setObjectName(_fromUtf8("menubar"))
@@ -114,56 +70,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menubar.addAction(self.menuMenu.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
-    def button_actions(self):
-        self.actionMerge_Pdf_s.triggered.connect(self.mergerPdfs)
-        self.actionRegister_Compile.triggered.connect(self.registerCompile)
-        self.actionAbout.triggered.connect(self.about_popup)
-        self.actionDXF_Combine.triggered.connect(self.start_mergeDXF)
-        self.actionRegister_Update.triggered.connect(self.start_update_register)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-# TODO these functions need to be combined into one function
-    def mergerPdfs(self):
-        self.widget.hide()
-        self.gridLayout.removeWidget(self.widget)
-        self.gridLayout.addWidget(self.merge, 0, 0, 1, 1)
-        self.merge.show()
-        self.widget = self.merge
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        self.menuMenu.setTitle(_translate("MainWindow", "File", None))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help", None))
+        self.actionQuit.setText(_translate("MainWindow", "Quit", None))
+        self.actionHelp.setText(_translate("MainWindow", "Help", None))
+        self.actionAbout.setText(_translate("MainWindow", "About", None))
+        self.actionMerge_Pdf_s.setText(_translate("MainWindow", "Merge Pdf\'s", None))
+        self.actionDXF_Combine.setText(_translate("MainWindow", "DXF Combine", None))
+        self.actionRegister_Update.setText(_translate("MainWindow", "Register Update", None))
+        self.actionRegister_Compile.setText(_translate("MainWindow", "Register Compile", None))
 
-    def start_mergeDXF(self):
-        self.widget.hide()
-        self.gridLayout.removeWidget(self.widget)
-        self.gridLayout.addWidget(self.mergeDXF, 0, 0, 1, 1)
-        self.mergeDXF.show()
-        self.widget = self.mergeDXF
-
-    def registerCompile(self):
-        self.widget.hide()
-
-        self.gridLayout.removeWidget(self.widget)
-        self.gridLayout.addWidget(self.register, 0, 0, 1, 1)
-        self.register.show()
-        self.widget = self.register
-
-    def start_update_register(self):
-        self.widget.hide()
-        self.gridLayout.removeWidget(self.widget)
-        self.gridLayout.addWidget(self.update, 0, 0, 1, 1)
-        self.update.show()
-        self.widget = self.update
-
-    def about_popup(self):
-        self.about.show()
-
-def run():
-    app = QtGui.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon('cullen3logo.png'))
-    ex = Ui_MainWindow()
-    sys.exit(app.exec_())
-
-
-if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon('../cullen3logo.png'))
-    ex = Ui_MainWindow()
-
-    sys.exit(app.exec_())

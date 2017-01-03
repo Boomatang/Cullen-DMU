@@ -1,4 +1,4 @@
-from src.UXDesign.MainWindow import run
+from src.UXDesign.MyMainWindow import run
 
 if __name__ == '__main__':
     run()
