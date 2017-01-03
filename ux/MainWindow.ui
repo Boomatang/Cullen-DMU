@@ -47,7 +47,15 @@
     <addaction name="actionHelp"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuClient">
+    <property name="title">
+     <string>Client</string>
+    </property>
+    <addaction name="actionAdd_Client"/>
+    <addaction name="actionView_Clients"/>
+   </widget>
    <addaction name="menuMenu"/>
+   <addaction name="menuClient"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -84,6 +92,16 @@
   <action name="actionRegister_Compile">
    <property name="text">
     <string>Register Compile</string>
+   </property>
+  </action>
+  <action name="actionAdd_Client">
+   <property name="text">
+    <string>Add Client</string>
+   </property>
+  </action>
+  <action name="actionView_Clients">
+   <property name="text">
+    <string>View Clients</string>
    </property>
   </action>
  </widget>
