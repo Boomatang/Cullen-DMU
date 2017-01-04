@@ -14,13 +14,14 @@ from src.UXDesign.MyRegisterCompile import RegisterCompileClass as RegisterCompi
 from src.UXDesign.About import Ui_About as About
 from src.UXDesign.MyMergeDXF import MergeDXFClass
 from src.UXDesign.MyRegisterUpdate import UpdateRegisterClass
+from src.Client.UX.Add_Client import AddClient
 
 
 class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
-    def __init__(self, parent=None):
-        super(MyMainWindow, self).__init__(parent)
+    def __init__(self):
+        super(MyMainWindow, self).__init__()
 
-        self.widget = ""
+        self.widget = None
         self.merge = MergePDF()
         self.register = RegisterCompile()
         self.about = About()
@@ -30,6 +31,8 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.button_actions()
 
         self.show()
+        self.AddClient = AddClient(self)
+
 
     def button_actions(self):
         self.actionMerge_Pdf_s.triggered.connect(self.mergerPdfs)
@@ -37,6 +40,7 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about_popup)
         self.actionDXF_Combine.triggered.connect(self.start_mergeDXF)
         self.actionRegister_Update.triggered.connect(self.start_update_register)
+        self.actionAdd_Client.triggered.connect(self.add_client)
 
 # TODO these functions need to be combined into one function
 
@@ -71,8 +75,15 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.update.show()
         self.widget = self.update
 
+    def add_client(self):
+        self.widget_hide()
+        self.gridLayout.addWidget(self.AddClient, 0, 0, 1, 1)
+        self.AddClient.show()
+        self.widget = self.AddClient
+
     def about_popup(self):
         self.about.show()
+
 
 def run():
     app = QtGui.QApplication(sys.argv)
