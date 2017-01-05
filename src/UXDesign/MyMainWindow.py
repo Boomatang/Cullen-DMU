@@ -15,6 +15,8 @@ from src.UXDesign.About import Ui_About as About
 from src.UXDesign.MyMergeDXF import MergeDXFClass
 from src.UXDesign.MyRegisterUpdate import UpdateRegisterClass
 from src.Client.UX.Add_Client import AddClient
+from src.Client.UX.ViewClientList import ViewClientList
+from src.Client.UX.View_Client_Detail import View_Client_Detail
 
 
 class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
@@ -41,6 +43,7 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.actionDXF_Combine.triggered.connect(self.start_mergeDXF)
         self.actionRegister_Update.triggered.connect(self.start_update_register)
         self.actionAdd_Client.triggered.connect(self.add_client)
+        self.actionView_Clients.triggered.connect(self.view_client_list)
 
 # TODO these functions need to be combined into one function
 
@@ -80,6 +83,22 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.gridLayout.addWidget(self.AddClient, 0, 0, 1, 1)
         self.AddClient.show()
         self.widget = self.AddClient
+
+    def view_client_list(self):
+        view_client_list = ViewClientList(self)
+
+        self.widget_hide()
+        self.gridLayout.addWidget(view_client_list, 0, 0, 1, 1)
+        view_client_list.show()
+        self.widget = view_client_list
+
+    def view_client_details(self, client):
+        view = View_Client_Detail(self, client)
+
+        self.widget_hide()
+        self.gridLayout.addWidget(view, 0, 0, 1, 1)
+        view.show()
+        self.widget = view
 
     def about_popup(self):
         self.about.show()

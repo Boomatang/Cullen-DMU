@@ -15,6 +15,17 @@ class Client(db.Entity):
             else:
                 Client(name=name)
 
+    @staticmethod
+    def select_clients():
+        with db_session:
+            return select(c for c in Client).order_by(Client.name)[:]
+
+    def __repr__(self):
+        return "<Client : {}>".format(self.name)
+
+    def __lt__(self, other):
+        return self.name < other.name
+
 db.bind('sqlite', 'client_db.sqlite', create_db=False)
 db.generate_mapping(create_tables=True)
 

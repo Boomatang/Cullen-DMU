@@ -40,7 +40,7 @@ class AddClient(QtGui.QWidget, Ui_Form):
             self.info_massage('Client added')
 
             try:
-                self.main_window.start_update_register()
+                self.main_window.view_client_list()
             except AttributeError:
                 self.info_massage('An internal error happened please try again')
         else:
