@@ -25,7 +25,6 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
         self.widget = None
         self.merge = MergePDF()
-        self.register = RegisterCompile()
         self.about = About()
         self.mergeDXF = MergeDXFClass()
         self.update = UpdateRegisterClass()
@@ -67,10 +66,12 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.widget = self.mergeDXF
 
     def registerCompile(self):
+        register = RegisterCompile(self)
+
         self.widget_hide()
-        self.gridLayout.addWidget(self.register, 0, 0, 1, 1)
-        self.register.show()
-        self.widget = self.register
+        self.gridLayout.addWidget(register, 0, 0, 1, 1)
+        register.show()
+        self.widget = register
 
     def start_update_register(self):
         self.widget_hide()

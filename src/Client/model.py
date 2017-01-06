@@ -20,6 +20,11 @@ class Client(db.Entity):
         with db_session:
             return select(c for c in Client).order_by(Client.name)[:]
 
+    @staticmethod
+    @db_session
+    def get_client_by_name(name):
+        return Client.get(name=name)
+
     def __repr__(self):
         return "<Client : {}>".format(self.name)
 

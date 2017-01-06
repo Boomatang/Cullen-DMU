@@ -9,7 +9,7 @@ class View_Client_Detail(QtGui.QWidget, Ui_Form):
     def __init__(self, parent=None, client=None):
         super(View_Client_Detail, self).__init__()
         self.setupUi(self)
-        print(client.name)
+        print(client)
 
         # self.button_actions()
 

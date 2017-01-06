@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'registerCompile.ui'
+# Form implementation generated from reading ui file '/home/boomatang/Projects/Python/Cullen-DMU/ux/registerCompile.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -31,6 +31,10 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.client_list_box = QtGui.QComboBox(Form)
+        self.client_list_box.setDuplicatesEnabled(True)
+        self.client_list_box.setObjectName(_fromUtf8("client_list_box"))
+        self.verticalLayout.addWidget(self.client_list_box)
         self.register_documnet = QtGui.QPushButton(Form)
         self.register_documnet.setEnabled(True)
         self.register_documnet.setObjectName(_fromUtf8("register_documnet"))

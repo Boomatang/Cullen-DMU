@@ -5,16 +5,20 @@ import src.UXDesign.registerCompile as RegisterCompile
 from src.Merge import Compile, merge
 from src.other.text_report import TextReport
 from src.UXDesign.MyRegisterCompileUpdate import RegisterCompileUpdate
+from src.Client.model import Client
 
 class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
     def __init__(self, parent=None):
-        super(RegisterCompileClass, self).__init__(parent)
+        super(RegisterCompileClass, self).__init__()
+        self.client_list = Client.select_clients()
         self.register = p('')
         self.project = p('')
         self.destination_Folder = p('')
         self.update = RegisterCompileUpdate.Ui_Dialog()
         self.setupUi(self)
         self.button_actions()
+        print(self.client_list)
+        self.dropbox_update()
 
     def button_actions(self):
         self.register_documnet.clicked.connect(self.get_register_document)
@@ -45,7 +49,23 @@ class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
         except AttributeError as e:
             print('Possible button Fail: {}'.format(e))
 
+    def dropbox_update(self):
+        count = len(self.client_list) - 1
+        i = 0
+
+        while i <= count:
+            self.client_list_box.addItem(self.client_list[i].name)
+            i += 1
+
+
     def run(self):
+
+        name = self.client_list_box.currentText()
+
+        client = Client.get_client_by_name(name)
+        print(client.name)
+
+        '''
         print('I am running')
         files = Compile.run(str(self.register), str(self.project))
         folder = Compile.create_date_folder(str(self.destination_Folder))
@@ -64,6 +84,7 @@ class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
         report = TextReport(files['error'], files['progress'], files['ignore'], str(folder))
         report.run()
         print('Finished')
+        '''
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
