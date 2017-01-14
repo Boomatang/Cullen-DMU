@@ -11,7 +11,8 @@ options = {
         'includes': ['atexit', 'os'],
         'packages': ['openpyxl', 'os'],
         'path': sys.path + ['src'],
-        'include_files': 'src\\cullen3logo.png'
+        'include_files': ['src\\cullen3logo.png',
+                          'src\\Client\\client_db.sqlite']
     }
 }
 
@@ -26,4 +27,5 @@ setup(name='Cullen DMU',
       author='Jim Fitzpatrick',
       author_email='jimfity@gmail.com',
       options=options,
-      executables=executables)
+      executables=executables,
+      requires=['PIL', 'reportlab'])
