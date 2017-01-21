@@ -1,61 +1,47 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MergeDXF.ui'
+# Form implementation generated from reading ui file '/home/boomatang/Projects/Python/Cullen-DMU/ux/MergeDXF.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created by: PyQt5 UI code generator 5.7.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MergeDXF(object):
     def setupUi(self, MergeDXF):
-        MergeDXF.setObjectName(_fromUtf8("MergeDXF"))
+        MergeDXF.setObjectName("MergeDXF")
         MergeDXF.setEnabled(True)
         MergeDXF.resize(625, 388)
-        self.horizontalLayout = QtGui.QHBoxLayout(MergeDXF)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.verticalLayout = QtGui.QVBoxLayout()
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.mergeSelectFolder = QtGui.QPushButton(MergeDXF)
-        self.mergeSelectFolder.setObjectName(_fromUtf8("mergeSelectFolder"))
+        self.horizontalLayout = QtWidgets.QHBoxLayout(MergeDXF)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.mergeSelectFolder = QtWidgets.QPushButton(MergeDXF)
+        self.mergeSelectFolder.setObjectName("mergeSelectFolder")
         self.verticalLayout.addWidget(self.mergeSelectFolder)
-        self.mergeDXF = QtGui.QPushButton(MergeDXF)
-        self.mergeDXF.setEnabled(False)
-        self.mergeDXF.setObjectName(_fromUtf8("mergeDXF"))
-        self.verticalLayout.addWidget(self.mergeDXF)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.mergePDF = QtWidgets.QPushButton(MergeDXF)
+        self.mergePDF.setEnabled(False)
+        self.mergePDF.setObjectName("mergePDF")
+        self.verticalLayout.addWidget(self.mergePDF)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout.addLayout(self.verticalLayout)
-        self.verticalLayout_2 = QtGui.QVBoxLayout()
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.mergeFolder = QtGui.QLabel(MergeDXF)
-        self.mergeFolder.setObjectName(_fromUtf8("mergeFolder"))
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.mergeFolder = QtWidgets.QLabel(MergeDXF)
+        self.mergeFolder.setObjectName("mergeFolder")
         self.verticalLayout_2.addWidget(self.mergeFolder)
-        self.mergeProcess = QtGui.QLabel(MergeDXF)
-        self.mergeProcess.setObjectName(_fromUtf8("mergeProcess"))
+        self.mergeProcess = QtWidgets.QLabel(MergeDXF)
+        self.mergeProcess.setObjectName("mergeProcess")
         self.verticalLayout_2.addWidget(self.mergeProcess)
-        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem1)
-        self.func_disc = QtGui.QLabel(MergeDXF)
+        self.func_disc = QtWidgets.QLabel(MergeDXF)
         self.func_disc.setWordWrap(True)
-        self.func_disc.setObjectName(_fromUtf8("func_disc"))
+        self.func_disc.setObjectName("func_disc")
         self.verticalLayout_2.addWidget(self.func_disc)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_2.addItem(spacerItem2)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
 
@@ -63,10 +49,11 @@ class Ui_MergeDXF(object):
         QtCore.QMetaObject.connectSlotsByName(MergeDXF)
 
     def retranslateUi(self, MergeDXF):
-        MergeDXF.setWindowTitle(_translate("MergeDXF", "Form", None))
-        self.mergeSelectFolder.setText(_translate("MergeDXF", "Select Folder", None))
-        self.mergeDXF.setText(_translate("MergeDXF", "Merge DXF\'s", None))
-        self.mergeFolder.setText(_translate("MergeDXF", "Chosse a Folder", None))
-        self.mergeProcess.setText(_translate("MergeDXF", "Prosscessing Files", None))
-        self.func_disc.setText(_translate("MergeDXF", "The DXF merge tool will create a ZIP folder of all DXF files for the project and a report that shows the change to the files. This report is included in the ZIP file.", None))
+        _translate = QtCore.QCoreApplication.translate
+        MergeDXF.setWindowTitle(_translate("MergeDXF", "Form"))
+        self.mergeSelectFolder.setText(_translate("MergeDXF", "Select Folder"))
+        self.mergePDF.setText(_translate("MergeDXF", "Merge DXF\'s"))
+        self.mergeFolder.setText(_translate("MergeDXF", "Chosse a Folder"))
+        self.mergeProcess.setText(_translate("MergeDXF", "Prosscessing Files"))
+        self.func_disc.setText(_translate("MergeDXF", "The DXF merge tool will create a ZIP folder of all DXF files for the project and a report that shows the change to the files. This report is included in the ZIP file."))
 

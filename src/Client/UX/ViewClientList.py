@@ -1,7 +1,7 @@
 import sys
 from src.Client.UX.ClintList import Ui_Form, _fromUtf8
 from src.Client.model import Client
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 
 
 class ViewClientList(QtGui.QWidget, Ui_Form):

@@ -1,5 +1,5 @@
 import sys
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 from pathlib import Path as p
 import src.UXDesign.registerCompile as RegisterCompile
 from src.Merge import Compile, merge

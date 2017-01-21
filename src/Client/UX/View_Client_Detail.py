@@ -2,7 +2,7 @@ import sys
 from pathlib import Path as p
 from src.Client.UX.Client_View import Ui_Form
 from src.Client.model import Client
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 
 
 class View_Client_Detail(QtGui.QWidget, Ui_Form):

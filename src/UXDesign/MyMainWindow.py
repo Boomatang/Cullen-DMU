@@ -1,13 +1,7 @@
-# -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindow.ui'
-#
-# Created by: PyQt4 UI code generator 4.11.4
-#
-# WARNING! All changes made in this file will be lost!
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui
 from src.UXDesign.MainWindow import Ui_MainWindow
 from src.UXDesign.MergePDF import Ui_MergePDF as MergePDF
 from src.UXDesign.MyRegisterCompile import RegisterCompileClass as RegisterCompile

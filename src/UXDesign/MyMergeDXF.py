@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path as p
 from src.Merge import mergeDXF as merge
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 
 import src.UXDesign.MergeDXF as Merge
 

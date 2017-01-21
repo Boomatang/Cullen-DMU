@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path as p
-from PyQt4 import QtGui
+from PyQt5 import QtGui
 from src.Merge import UpdateExcel
 
 import src.UXDesign.RegisterUpdate as Update
