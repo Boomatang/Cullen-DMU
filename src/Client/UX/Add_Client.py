@@ -1,11 +1,9 @@
 import sys
 from pathlib import Path as p
 
-import time
 
 from src.Client.UX.Add_Update import Ui_Form
 from src.Client.model import Client
-from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import *
 
 

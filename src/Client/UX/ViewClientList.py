@@ -1,10 +1,19 @@
 import sys
+
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QSizePolicy
+from PyQt5.QtWidgets import QSpacerItem
+from PyQt5.QtWidgets import QWidget
+
 from src.Client.UX.ClintList import Ui_Form, _fromUtf8
-from src.Client.model import Client
+# from src.Client.model import Client
 from PyQt5 import QtGui
 
 
-class ViewClientList(QtGui.QWidget, Ui_Form):
+# TODO set this ui working. Buttons may be disabled
+
+class ViewClientList(QWidget, Ui_Form):
     def __init__(self, parent=None):
         super(ViewClientList, self).__init__()
         self.setupUi(self)
@@ -40,14 +49,14 @@ class ViewClientList(QtGui.QWidget, Ui_Form):
         self.add_spacer()
 
     def add_client_button(self, client):
-        client_name = QtGui.QPushButton(self.scrollAreaWidgetContents)
+        client_name = QPushButton(self.scrollAreaWidgetContents)
         client_name.setObjectName(_fromUtf8(client.name))
         client_name.setText(client.name)
         self.verticalLayout.addWidget(client_name)
         return client_name
 
     def add_spacer(self):
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        spacerItem = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -56,7 +65,7 @@ class ViewClientList(QtGui.QWidget, Ui_Form):
         self.main_window.view_client_details(client)
 
 
-class ClientButton(QtGui.QPushButton):
+class ClientButton(QPushButton):
 
     def __init__(self, parent=None, client=None):
         super(ClientButton, self).__init__()
@@ -66,10 +75,11 @@ class ClientButton(QtGui.QPushButton):
         self.id = client.id
 
     def add_action(self):
-        self.clicked.connect(self.next_view)
+        # self.clicked.connect(self.next_view)
+        pass
 
     def add(self):
-        client_name = QtGui.QPushButton(self.parent.scrollAreaWidgetContents)
+        client_name = QPushButton(self.parent.scrollAreaWidgetContents)
         client_name.setObjectName(_fromUtf8(self.name))
         client_name.setText(self.name)
         self.parent.verticalLayout.addWidget(client_name)
@@ -78,7 +88,7 @@ class ClientButton(QtGui.QPushButton):
         self.parent.button_action(self.id)
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     ex = ViewClientList()
     ex.show()
     sys.exit(app.exec_())
