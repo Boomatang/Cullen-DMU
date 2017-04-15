@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtGui
+from PyQt5.QtWidgets import *
 from pathlib import Path as p
 import src.UXDesign.registerCompile as RegisterCompile
 from src.Merge import Compile, merge
@@ -7,7 +7,8 @@ from src.other.text_report import TextReport
 from src.UXDesign.MyRegisterCompileUpdate import RegisterCompileUpdate
 from src.Client.model import Client
 
-class RegisterCompileClass(QtGui.QWidget, RegisterCompile.Ui_Form):
+
+class RegisterCompileClass(QWidget, RegisterCompile.Ui_Form):
     def __init__(self, parent=None):
         super(RegisterCompileClass, self).__init__()
         self.client_list = Client.select_clients()

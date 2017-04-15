@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/boomatang/Projects/Python/Cullen-DMU/ux/RegisterCompileUpdate.ui'
+# Form implementation generated from reading ui file '/home/boomatang/Programing/Cullen-DMU/ux/RegisterCompileUpdate.ui'
 #
-# Created by: PyQt5 UI code generator 5.7.1
+# Created by: PyQt5 UI code generator 5.8.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,7 +35,6 @@ class Ui_Dialog(object):
         self.error_files = QtWidgets.QWidget()
         self.error_files.setObjectName("error_files")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.error_files)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_2 = QtWidgets.QLabel(self.error_files)
         self.label_2.setWordWrap(True)

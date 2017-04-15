@@ -1,9 +1,9 @@
 import sys
-from PyQt5 import QtGui
+from PyQt5.QtWidgets import *
 import src.UXDesign.RegisterCompileUpdate as RegisterCompileUpdate
 
 
-class RegisterCompileUpdateClass(QtGui.QDialog, RegisterCompileUpdate.Ui_Dialog):
+class RegisterCompileUpdateClass(QDialog, RegisterCompileUpdate.Ui_Dialog):
     def __init__(self, parent=None):
         super(RegisterCompileUpdateClass, self).__init__(parent)
         self.setupUi(self)
@@ -20,7 +20,7 @@ class RegisterCompileUpdateClass(QtGui.QDialog, RegisterCompileUpdate.Ui_Dialog)
         print('I am running and I\'m the update')
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     ex = RegisterCompileUpdateClass()
     ex.show()
     sys.exit(app.exec_())

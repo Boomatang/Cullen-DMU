@@ -6,8 +6,8 @@ from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QSpacerItem
 from PyQt5.QtWidgets import QWidget
 
-from src.Client.UX.ClintList import Ui_Form, _fromUtf8
-# from src.Client.model import Client
+from src.Client.UX.ClintList import Ui_Form
+from src.Client.model import Client
 from PyQt5 import QtGui
 
 
@@ -50,7 +50,7 @@ class ViewClientList(QWidget, Ui_Form):
 
     def add_client_button(self, client):
         client_name = QPushButton(self.scrollAreaWidgetContents)
-        client_name.setObjectName(_fromUtf8(client.name))
+        client_name.setObjectName(client.name)
         client_name.setText(client.name)
         self.verticalLayout.addWidget(client_name)
         return client_name
@@ -80,7 +80,7 @@ class ClientButton(QPushButton):
 
     def add(self):
         client_name = QPushButton(self.parent.scrollAreaWidgetContents)
-        client_name.setObjectName(_fromUtf8(self.name))
+        client_name.setObjectName(self.name)
         client_name.setText(self.name)
         self.parent.verticalLayout.addWidget(client_name)
 
