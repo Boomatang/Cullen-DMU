@@ -1,14 +1,13 @@
 import sys
 from pathlib import Path as p
 
-import time
 
-from src.Client.UX.Add_Update_Client import Ui_Form
+from src.Client.UX.Add_Update import Ui_Form
 from src.Client.model import Client
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import *
 
 
-class AddClient(QtGui.QWidget, Ui_Form):
+class AddClient(QWidget, Ui_Form):
     def __init__(self, parent=None):
         super(AddClient, self).__init__()
         self.r = None
@@ -28,7 +27,7 @@ class AddClient(QtGui.QWidget, Ui_Form):
         self.action_button.clicked.connect(self.add_client)
 
     def get_logo(self):
-        r = QtGui.QFileDialog.getOpenFileName()
+        r = QFileDialog.getOpenFileName()
         self.logo = p(r)
         self.logo_path.setText(str(self.logo))
 
@@ -53,7 +52,7 @@ class AddClient(QtGui.QWidget, Ui_Form):
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     ex = AddClient()
     ex.show()
     sys.exit(app.exec_())

@@ -1,15 +1,10 @@
-# -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindow.ui'
-#
-# Created by: PyQt4 UI code generator 4.11.4
-#
-# WARNING! All changes made in this file will be lost!
 import sys
 
-from PyQt4 import QtCore, QtGui
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import *
 from src.UXDesign.MainWindow import Ui_MainWindow
-from src.UXDesign.MergePDF import Ui_MergePDF as MergePDF
+from src.UXDesign.MyMergePDF import MergePDFClass as MergePDF
 from src.UXDesign.MyRegisterCompile import RegisterCompileClass as RegisterCompile
 from src.UXDesign.About import Ui_About as About
 from src.UXDesign.MyMergeDXF import MergeDXFClass
@@ -19,7 +14,7 @@ from src.Client.UX.ViewClientList import ViewClientList
 from src.Client.UX.View_Client_Detail import View_Client_Detail
 
 
-class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
+class MyMainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MyMainWindow, self).__init__()
 
@@ -106,14 +101,14 @@ class MyMainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
 
 def run():
-    app = QtGui.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon('cullen3logo.png'))
+    app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('cullen3logo.png'))
     ex = MyMainWindow()
     sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon('../cullen3logo.png'))
+    app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('../cullen3logo.png'))
     ex = MyMainWindow()
     sys.exit(app.exec_())

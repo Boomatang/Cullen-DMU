@@ -31,8 +31,8 @@ class Client(db.Entity):
     def __lt__(self, other):
         return self.name < other.name
 
-db.bind('sqlite', 'client_db.sqlite', create_db=False)
-db.generate_mapping(create_tables=True)
+# db.bind('sqlite', 'client_db.sqlite', create_db=False)
+# db.generate_mapping(create_tables=True)
 
 
 def create_model():

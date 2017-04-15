@@ -1,12 +1,12 @@
 import sys
 from pathlib import Path as p
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import *
 from src.Merge import UpdateExcel
 
 import src.UXDesign.RegisterUpdate as Update
 
 
-class UpdateRegisterClass(QtGui.QWidget, Update.Ui_Form):
+class UpdateRegisterClass(QWidget, Update.Ui_Form):
     def __init__(self, parent=None):
         super(UpdateRegisterClass, self).__init__(parent)
         self.r = None
@@ -21,13 +21,13 @@ class UpdateRegisterClass(QtGui.QWidget, Update.Ui_Form):
         self.registerCompileStart.clicked.connect(self.run)
 
     def get_root(self):
-        r = QtGui.QFileDialog.getOpenFileName()
+        r = QFileDialog.getOpenFileName()
         self.root = p(r)
         if self.root.is_file() and self.source.is_file():
             self.registerCompileStart.setEnabled(True)
 
     def get_source(self):
-        r = QtGui.QFileDialog.getOpenFileName()
+        r = QFileDialog.getOpenFileName()
         self.source = p(r)
         if self.root.is_file() and self.source.is_file():
             self.registerCompileStart.setEnabled(True)
@@ -37,7 +37,7 @@ class UpdateRegisterClass(QtGui.QWidget, Update.Ui_Form):
         print('Im finished')
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     ex = UpdateRegisterClass()
     ex.show()
     sys.exit(app.exec_())
